@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6236000344152347343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178986101452588977}
+  - component: {fileID: 6879122963995492520}
+  m_Layer: 0
+  m_Name: DungeonFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1178986101452588977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236000344152347343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6879122963995492520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236000344152347343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b2b0cdefee2d4469f5037ce4284aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: -7400323987025729856, guid: 337be01c3b97ba047822408995e6a414, type: 3}
+  cardLeftPrefab: {fileID: 2775193018498784037, guid: 82b7d89037fbcad4faf645625fbca3e6, type: 3}
+  cardRightPrefab: {fileID: 1518791929897011066, guid: 07b7a37e7bd6ee244a79377259face46, type: 3}
+  cardTopPrefab: {fileID: 8821450991401887267, guid: 77e36bd481ed0414cb4b375282799fbd, type: 3}
+  cardBottomPrefab: {fileID: 1495327822484797865, guid: 49cd4e9c520e14a46854c10601dc42fb, type: 3}
+  cardObservePrefab: {fileID: 2212952977284037130, guid: 505b7df0f494b194ea7a1af638a4b261, type: 3}
+  cardEnterPrefab: {fileID: 517500167418581246, guid: 82194331e4adf104bb198ddb2bd4e23c, type: 3}
+  cardRunAwayPrefab: {fileID: 1451344344209683207, guid: 87895de9f68e5f94faf6e44f9660ac10, type: 3}
+  cardDescriptionPrefab: {fileID: 6594431495276819817, guid: 4374460e647724f45a22ee6fe8dbb66e, type: 3}
