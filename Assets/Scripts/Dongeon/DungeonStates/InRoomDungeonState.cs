@@ -20,11 +20,11 @@ namespace AG
             switch (currentRoom.GetRoomType())
             {
                 case RoomType.Entry:
-                    cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "It's the entry of the dungeon.\n\nWhat do you do ?";
+                    cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "It's the entry of the dungeon.\n\nWhich way to go to ?";
                     DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.endRoomDungeonStateInstance);
                     break;
                 case RoomType.Empty:
-                    cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You find an empty room.\n\nWhat do you do ?";
+                    cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You find an empty room.\n\nWhich way to go to ?";
                     DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.endRoomDungeonStateInstance);
                     break;
                 case RoomType.Monster:

@@ -23,7 +23,7 @@ namespace AG
 
         private void Awake()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = this;
             }
@@ -86,6 +86,21 @@ namespace AG
         public float GetCurrentPerception()
         {
             return currentPerception;
+        }
+
+        public Race GetRace()
+        {
+            return startingRace;
+        }
+
+        public PlayerClass GetClass()
+        {
+            return startingClass;
+        }
+
+        public StartingObject GetStartingObject()
+        {
+            return startingObject;
         }
     }
 }

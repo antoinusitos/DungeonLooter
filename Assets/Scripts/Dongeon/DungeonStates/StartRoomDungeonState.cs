@@ -59,11 +59,10 @@ namespace AG
                     }
                 case CardType.Observe:
                     {
-                        Debug.Log("Observe");
-                        Room targetRoom = DungeonGeneratorManager.instance.GetDungeon().GetTargetRoom();
-                        DungeonGeneratorManager.instance.GetDungeon().SetTargetRoom(null);
-                        DungeonGeneratorManager.instance.GetDungeon().SetCurrentRoom(targetRoom);
-                        return DungeonStatesManager.instance.inRoomDungeonStateInstance;
+                        DungeonUIManager.instance.CleanDescriptionCard();
+                        Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
+                        cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You try to see in the room and it seems empty.\n\nWhat do you do ?";
+                        return null;
                     }
                 default:
                     return null;

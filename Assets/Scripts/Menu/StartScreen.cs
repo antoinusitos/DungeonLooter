@@ -42,11 +42,11 @@ namespace AG
 
         public void StartGame()
         {
+            DungeonUIManager.instance.ShowLoadingScreen();
+
             PlayerManager.instance.SetRaceInfo(InfoManager.instance.GetRaceInfoWithIndex(raceIndex));
             PlayerManager.instance.SetClassInfo(InfoManager.instance.GetClassInfoWithIndex(classIndex));
             PlayerManager.instance.SetStartingObject(InfoManager.instance.GetItemInfoWithIndex(itemIndex));
-
-            DungeonGeneratorManager.instance.GenerateDungeon();
         }
 
         #region RACE
