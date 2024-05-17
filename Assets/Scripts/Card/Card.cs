@@ -6,29 +6,12 @@ namespace AG
 {
     public class Card : MonoBehaviour
     {
-        public void GoLeft()
-        { 
-            DungeonGeneratorManager.instance.GetDungeonFlow().GoLeft();
-        }
+        [SerializeField]
+        private CardType cardType = CardType.None;
 
-        public void GoRight()
+        public void SendCardType()
         {
-            DungeonGeneratorManager.instance.GetDungeonFlow().GoRight();
-        }
-
-        public void GoTop()
-        {
-            DungeonGeneratorManager.instance.GetDungeonFlow().GoTop();
-        }
-
-        public void GoBottom()
-        {
-            DungeonGeneratorManager.instance.GetDungeonFlow().GoBottom();
-        }
-
-        public void EnterRoom()
-        {
-            DungeonGeneratorManager.instance.GetDungeonFlow().EnterRoom();
+            DungeonGeneratorManager.instance.GetDungeonFlow().ReceiveCardType(cardType);
         }
     }
 }

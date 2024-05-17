@@ -50,3 +50,6 @@ MonoBehaviour:
   classes:
   - {fileID: 11400000, guid: cbc168b620d5c3a4e9e5d61113420f3e, type: 2}
   - {fileID: 11400000, guid: 4f25cc25e1f463a45abd941d816fa2f3, type: 2}
+  items:
+  - {fileID: 11400000, guid: 7add13a5821ab894abadc54d171b43db, type: 2}
+  - {fileID: 11400000, guid: e6d92411ddc428349bb9215f2056d500, type: 2}

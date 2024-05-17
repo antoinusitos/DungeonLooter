@@ -17,6 +17,13 @@ namespace AG
         [SerializeField]
         private Transform cardPlacementDescription = null;
 
+        [SerializeField]
+        private RaceCard raceCard = null;
+        [SerializeField]
+        private ClassCard classCard = null;
+        [SerializeField]
+        private StartingObjectCard startingObjectCard = null;
+
         private void Awake()
         {
             if(instance == null)
@@ -55,6 +62,21 @@ namespace AG
         public void CleanDescriptionCard()
         {
             Destroy(cardPlacementDescription.GetChild(0).gameObject);
+        }
+
+        public RaceCard GetRaceCard()
+        {
+            return raceCard;
+        }
+
+        public ClassCard GetClassCard()
+        {
+            return classCard;
+        }
+
+        public StartingObjectCard GetStartingObjectCard()
+        {
+            return startingObjectCard;
         }
     }
 }

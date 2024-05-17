@@ -27,24 +27,13 @@ namespace AG
 
         private Room currentRoom = null;
 
-        [Header("DEBUG")]
-        [SerializeField]
-        private bool moveLeft = false;
-        [SerializeField]
-        private bool moveRight = false;
-        [SerializeField]
-        private bool moveTop = false;
-        [SerializeField]
-        private bool moveBottom = false;
+        private Room targetRoom = null;
+        private Door targetDoor = null;
 
-        [SerializeField]
-        private bool canMoveLeft = false;
-        [SerializeField]
-        private bool canMoveRight = false;
-        [SerializeField]
-        private bool canMoveTop = false;
-        [SerializeField]
-        private bool canMoveBottom = false;
+        private Room nextRoom = null;
+        private Room previousRoom = null;
+
+        private Door previousDoor = null;
 
         public Room GetStartingRoom()
         {
@@ -54,6 +43,11 @@ namespace AG
         public Room GetRoom(int x, int y)
         {
             return generatedRooms[y * dungeonRows + x];
+        }
+
+        public int GetDungeonRows()
+        {
+            return dungeonRows;
         }
 
         public void Setup()
@@ -74,7 +68,6 @@ namespace AG
                     {
                         startingRoom = generatedRooms[y * dungeonRows + x];
                         startingRoom.SetIsUsed();
-                        SetCurrentRoom(startingRoom);
                     }
                 }
             }
@@ -83,6 +76,19 @@ namespace AG
         public void Generate()
         {
             //Use this to generate events
+            for (int doorIndex = 0; doorIndex < doors.Count; doorIndex++)
+            {
+                doors[doorIndex].SetDoorType((DoorType)(Random.Range(1, (int)DoorType.MAX - 1)));
+            }
+
+            for (int roomIndex = 0; roomIndex < rooms.Count; roomIndex++)
+            {
+                if (rooms[roomIndex].GetRoomType() == RoomType.Entry)
+                {
+                    continue;
+                }
+                rooms[roomIndex].SetRoomType((RoomType)(Random.Range(2, (int)RoomType.MAX - 1)));
+            }
         }
 
         public void Analyze()
@@ -102,9 +108,16 @@ namespace AG
                 }
             }
 
+            List<Room> potentialBossRoom = new List<Room>();
+
             for (int roomIndex = 0; roomIndex < rooms.Count; roomIndex++)
             {
                 Door[] tempDoors = rooms[roomIndex].GetDoors();
+                if(tempDoors.Length == 1)
+                {
+                    potentialBossRoom.Add(rooms[roomIndex]);
+                }
+
                 for (int doorIndex = 0; doorIndex < tempDoors.Length; doorIndex++)
                 {
                     Room otherRoom = null;
@@ -136,9 +149,30 @@ namespace AG
 
                 }
             }
+
+            for (int roomIndex = 0; roomIndex < potentialBossRoom.Count; roomIndex++)
+            {
+                if (potentialBossRoom[roomIndex].GetRoomType() != RoomType.Entry)
+                {
+                    potentialBossRoom[roomIndex].SetRoomType(RoomType.Boss);
+                    potentialBossRoom[roomIndex].GetComponentInChildren<Renderer>().material.color = Color.green;
+                    break;
+                }
+            }
+
+            for (int y = 0; y < dungeonRows; y++)
+            {
+                for (int x = 0; x < dungeonRows; x++)
+                {
+                    if(!generatedRooms[y * dungeonRows + x].GetIsUsed())
+                    {
+                        generatedRooms[y * dungeonRows + x].GetComponentInChildren<Renderer>().material.color = Color.black;
+                    }
+                }
+            }
         }
 
-        public Door DebugSpawnDoor()
+        public Door SpawnDoor()
         {
             Door door = Instantiate(doorPrefab);
             door.transform.SetParent(transform);
@@ -150,15 +184,91 @@ namespace AG
         {
             if(currentRoom)
             {
-                currentRoom.GetComponentInChildren<Renderer>().material.color = Color.green;
+                if (currentRoom.GetRoomType() == RoomType.Boss)
+                {
+                    currentRoom.GetComponentInChildren<Renderer>().material.color = Color.green;
+                }
+                else
+                {
+                    currentRoom.GetComponentInChildren<Renderer>().material.color = Color.white;
+                }
             }
             currentRoom = inRoom;
-            currentRoom.GetComponentInChildren<Renderer>().material.color = Color.red;
+            if (currentRoom)
+            {
+                currentRoom.GetComponentInChildren<Renderer>().material.color = Color.red;
+            }
         }
 
         public Room GetCurrentRoom()
         {
             return currentRoom;
+        }
+
+        public Room GetNextRoom()
+        {
+            return nextRoom;
+        }
+
+        public void SetNextRoom(Room room)
+        {
+            nextRoom = room;
+        }
+
+        public Room GetPreviousRoom()
+        {
+            return previousRoom;
+        }
+
+        public void SetPreviousRoom(Room room)
+        {
+            previousRoom = room;
+        }
+
+        public void SetTargetRoom(Room room)
+        {
+            if (targetRoom)
+            {
+                targetRoom.SetIsTargeted(false);
+            }
+            targetRoom = room;
+            if (targetRoom)
+            {
+                targetRoom.SetIsTargeted(true);
+            }
+        }
+
+        public Room GetTargetRoom()
+        {
+            return targetRoom;
+        }
+
+        public void SetTargetDoor(Door door)
+        {
+            if(targetDoor)
+            {
+                targetDoor.SetIsTargeted(false);
+            }
+            targetDoor = door;
+            if (targetDoor)
+            {
+                targetDoor.SetIsTargeted(true);
+            }
+        }
+
+        public Door GetTargetDoor()
+        {
+            return targetDoor;
+        }
+
+        public Door GetPreviousDoor()
+        {
+            return previousDoor;
+        }
+
+        public void SetPreviousDoor(Door door)
+        {
+            previousDoor = door;
         }
     }
 }

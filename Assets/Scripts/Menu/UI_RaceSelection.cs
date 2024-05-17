@@ -15,13 +15,7 @@ namespace AG
         private TextMeshProUGUI raceDesc = null;
 
         [SerializeField]
-        private TextMeshProUGUI raceHP = null;
-
-        [SerializeField]
-        private TextMeshProUGUI raceDamage = null;
-
-        [SerializeField]
-        private TextMeshProUGUI raceChance = null;
+        private TextMeshProUGUI raceStats = null;
 
         [SerializeField]
         private Image raceImage = null;
@@ -31,18 +25,22 @@ namespace AG
             raceName.text = raceInfo.raceName;
             raceDesc.text = raceInfo.raceDescription;
             raceImage.sprite = raceInfo.raceImage;
-            for(int statIndex = 0; statIndex < raceInfo.raceStats.Length;  statIndex++)
+            raceStats.text = "";
+            for (int statIndex = 0; statIndex < raceInfo.raceStats.Length;  statIndex++)
             {
                 switch(raceInfo.raceStats[statIndex].modifier)
                 {
                     case Modifier.HP:
-                        raceHP.text = "HP: " + raceInfo.raceStats[statIndex].value;
+                        raceStats.text += "HP: " + raceInfo.raceStats[statIndex].value + "\n";
                         break;
                     case Modifier.Damage:
-                        raceDamage.text = "Damage: " + raceInfo.raceStats[statIndex].value;
+                        raceStats.text += "Damage: " + raceInfo.raceStats[statIndex].value + "\n";
                         break;
                     case Modifier.Chance:
-                        raceChance.text = "Chance: " + raceInfo.raceStats[statIndex].value;
+                        raceStats.text += "Chance: " + raceInfo.raceStats[statIndex].value + "\n";
+                        break;
+                    case Modifier.Perception:
+                        raceStats.text += "Perception: " + raceInfo.raceStats[statIndex].value + "\n";
                         break;
                 }
             }

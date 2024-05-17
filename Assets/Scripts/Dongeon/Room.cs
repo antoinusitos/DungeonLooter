@@ -20,6 +20,35 @@ namespace AG
 
         private RoomType roomType = RoomType.None;
 
+        private bool isTargeted = false;
+
+        private float targetValue = 0.0f;
+        private float targetDirection = 1.0f;
+
+        private void Update()
+        {
+            if (!isTargeted)
+            {
+                return;
+            }
+
+            GetComponentInChildren<Renderer>().material.color = new Color(targetValue, 0, 0);
+            targetValue += Time.deltaTime * targetDirection;
+            if (targetValue > 1)
+            {
+                targetDirection = -1;
+            }
+            else if (targetValue < 0)
+            {
+                targetDirection = 1;
+            }
+        }
+
+        public void SetIsTargeted(bool state)
+        {
+            isTargeted = state;
+            GetComponentInChildren<Renderer>().material.color = Color.white;
+        }
         public void SetXY(int inX,  int inY)
         {
             x = inX;
@@ -39,7 +68,12 @@ namespace AG
         public void SetIsUsed()
         {
             isActive = true;
-            GetComponentInChildren<Renderer>().material.color = Color.green;
+            GetComponentInChildren<Renderer>().material.color = Color.white;
+        }
+
+        public bool GetIsUsed()
+        {
+            return isActive;
         }
 
         public void SetRoomType(RoomType inRoomType)

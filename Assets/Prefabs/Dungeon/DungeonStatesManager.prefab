@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7435707664296242266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7435707664296242264}
+  - component: {fileID: 7435707664296242267}
+  m_Layer: 0
+  m_Name: DungeonStatesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7435707664296242264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7435707664296242266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7435707664296242267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7435707664296242266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425844f94fb3fae43b7de42f68528cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRoomDungeonState: {fileID: 11400000, guid: 24074fd613e86f143aec789cdb62f528, type: 2}
+  endRoomDungeonState: {fileID: 11400000, guid: 4f62e88c6ffbd7a4ba096de6967f0252, type: 2}
+  doorDungeonState: {fileID: 11400000, guid: 24fa2fa60716b454f91fd71019935a45, type: 2}
+  turnAroundDungeonState: {fileID: 11400000, guid: 572475c0fd88b1f469de8dc9a8fa9a9b, type: 2}
+  startRoomDungeonStateInstance: {fileID: 0}
+  endRoomDungeonStateInstance: {fileID: 0}
+  doorDungeonStateInstance: {fileID: 0}
+  turnAroundDungeonStateInstance: {fileID: 0}

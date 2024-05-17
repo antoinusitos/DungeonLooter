@@ -40,6 +40,15 @@ namespace AG
             SetupItem();
         }
 
+        public void StartGame()
+        {
+            PlayerManager.instance.SetRaceInfo(InfoManager.instance.GetRaceInfoWithIndex(raceIndex));
+            PlayerManager.instance.SetClassInfo(InfoManager.instance.GetClassInfoWithIndex(classIndex));
+            PlayerManager.instance.SetStartingObject(InfoManager.instance.GetItemInfoWithIndex(itemIndex));
+
+            DungeonGeneratorManager.instance.GenerateDungeon();
+        }
+
         #region RACE
 
         private void SetupRace()

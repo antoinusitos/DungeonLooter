@@ -84,10 +84,44 @@ namespace AG
     public enum DungeonStateType
     {
         StartRoom,
+        InRoom,
         EndRoom,
         Door,
         Combat,
         Event,
+        TurnAround,
+    }
+
+    public enum CardType
+    {
+        None,
+        GoLeft,
+        GoRight,
+        GoTop,
+        GoBottom,
+        EnterRoom,
+        OpenDoor,
+        RunAwayDoor,
+        RunAwayRoom,
+        TurnAround,
+        Observe,
+    }
+
+    public enum DoorMaterial
+    {
+        Wood,
+        Metal,
+        Gold,
+    }
+
+    public enum DoorType
+    {
+        None,
+        Normal,
+        Trapped,
+        Barricaded,
+
+        MAX
     }
 
     public enum RoomType
@@ -99,6 +133,7 @@ namespace AG
         Monster,
         Chest,
 
-        MAX
+        MAX,
+        Boss,
     }
 }

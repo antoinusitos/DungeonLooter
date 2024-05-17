@@ -53,3 +53,7 @@ MonoBehaviour:
   cardEnterPrefab: {fileID: 517500167418581246, guid: 82194331e4adf104bb198ddb2bd4e23c, type: 3}
   cardRunAwayPrefab: {fileID: 1451344344209683207, guid: 87895de9f68e5f94faf6e44f9660ac10, type: 3}
   cardDescriptionPrefab: {fileID: 6594431495276819817, guid: 4374460e647724f45a22ee6fe8dbb66e, type: 3}
+  cardUseObjectPrefab: {fileID: 7867533795770981522, guid: e0065c77d399de3499fc262d892d2472, type: 3}
+  cardOpenDoorPrefab: {fileID: 3159544037525717921, guid: 08366c3f06e144f45ae9f126d852ddf5, type: 3}
+  cardRunAwayDoorPrefab: {fileID: 1451344344209683207, guid: 9c05e031ce1936e4095b9613c674f73f, type: 3}
+  cardTurnAroundPrefab: {fileID: 6561071781504480535, guid: 291bee0988652684a85fdc72294a38ca, type: 3}
