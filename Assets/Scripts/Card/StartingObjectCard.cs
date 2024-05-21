@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AG
 {
@@ -16,10 +17,14 @@ namespace AG
         [SerializeField]
         private TextMeshProUGUI objectStats = null;
 
-        public void SetObject(ItemInfo itemInfo)
+        [SerializeField]
+        private Image objectSprite = null;
+
+        public void SetObject(StartingItemInfo itemInfo)
         {
             objectName.text = itemInfo.itemName;
             objectDesc.text = itemInfo.itemDescription;
+            objectSprite.sprite = itemInfo.itemImage;
 
             objectStats.text = "";
             for (int statIndex = 0; statIndex < itemInfo.itemStats.Length; statIndex++)

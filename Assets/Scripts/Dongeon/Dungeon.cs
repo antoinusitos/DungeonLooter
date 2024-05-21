@@ -18,6 +18,9 @@ namespace AG
         [SerializeField]
         private Door doorPrefab = null;
 
+        [SerializeField]
+        private RoomInfo roomInfo = null;
+
         private Room[] generatedRooms = null;
 
         private List<Room> rooms = new List<Room>();
@@ -87,7 +90,27 @@ namespace AG
                 {
                     continue;
                 }
-                rooms[roomIndex].SetRoomType((RoomType)(Random.Range(2, (int)RoomType.MAX - 1)));
+                float random = Random.Range(0.0f, 100.0f);
+
+                float cumulated = 0;
+                for(int roomInfoIndex = 0; roomInfoIndex < roomInfo.roomTypeChances.Length; roomInfoIndex++)
+                {
+                    if(random <= cumulated + roomInfo.roomTypeChances[roomInfoIndex].chance)
+                    {
+                        rooms[roomIndex].SetRoomType(roomInfo.roomTypeChances[roomInfoIndex].roomType);
+                        break;
+                    }
+                    cumulated += roomInfo.roomTypeChances[roomInfoIndex].chance;
+                }
+
+                switch(rooms[roomIndex].GetRoomType())
+                {
+                    case RoomType.Monster:
+                        {
+                            rooms[roomIndex].SetMonsterInfo(MonstersManager.instance.GetRandomMonster());
+                        }
+                        break;
+                }
             }
         }
 

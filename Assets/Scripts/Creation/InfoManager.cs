@@ -16,7 +16,7 @@ namespace AG
         private ClassInfo[] classes = null;
 
         [SerializeField]
-        private ItemInfo[] items = null;
+        private StartingItemInfo[] items = null;
 
         private void Awake()
         {
@@ -55,7 +55,7 @@ namespace AG
             return items.Length;
         }
 
-        public ItemInfo GetItemInfoWithIndex(int index)
+        public StartingItemInfo GetItemInfoWithIndex(int index)
         {
             return items[index];
         }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace AG
 {
-    [CreateAssetMenu(menuName = "Creation/Infos/Item")]
+    [CreateAssetMenu(menuName = "Items/Infos/ItemInfo")]
     public class ItemInfo : ScriptableObject
     {
-        public StartingObject itemClass = StartingObject.None;
+        public EquipmentType equipmentType = EquipmentType.None;
 
         public string itemName = "";
         public string itemDescription = "";

@@ -40,5 +40,10 @@ namespace AG
             }
             return null;
         }
+
+        public MonsterInfo GetRandomMonster()
+        {
+            return monsterInfos[Random.Range(0, monsterInfos.Length)];
+        }
     }
 }

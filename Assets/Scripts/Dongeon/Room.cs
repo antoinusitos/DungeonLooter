@@ -25,6 +25,10 @@ namespace AG
         private float targetValue = 0.0f;
         private float targetDirection = 1.0f;
 
+        private MonsterInfo monsterInfoAssociated = null;
+
+        private bool isCompleted = false;
+
         private void Update()
         {
             if (!isTargeted)
@@ -139,6 +143,26 @@ namespace AG
         public Door GetBottomDoor()
         {
             return bottomDoor;
+        }
+
+        public void SetMonsterInfo(MonsterInfo monsterInfo)
+        {
+            monsterInfoAssociated = monsterInfo;
+        }
+
+        public MonsterInfo GetMonsterInfoAssociated()
+        {
+            return monsterInfoAssociated;
+        }
+
+        public void SetIsCompleted()
+        {
+            isCompleted = true;
+        }
+
+        public bool GetIsCompleted()
+        {
+            return isCompleted;
         }
     }
 }

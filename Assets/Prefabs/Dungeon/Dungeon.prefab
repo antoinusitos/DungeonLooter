@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonRows: 9
-  xOffset: 10
-  yOffset: 20
   roomPrefab: {fileID: 3115889656033393680, guid: 0d5ea1360508fcb458e6e5f6aceb9ca3, type: 3}
   doorPrefab: {fileID: 8152808254118332635, guid: 3efaf70292649b24992d65cd9f25c32d, type: 3}
+  roomInfo: {fileID: 11400000, guid: 872971143a460ab41b8ab22fc94b5951, type: 2}

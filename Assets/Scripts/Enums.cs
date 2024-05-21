@@ -62,6 +62,7 @@ namespace AG
 
     public enum EquipmentType
     {
+        None,
         Boot,
         Shield,
         Armor,
@@ -105,6 +106,10 @@ namespace AG
         RunAwayRoom,
         TurnAround,
         Observe,
+        Attack,
+        Continue,
+        Loot,
+        NotLoot,
     }
 
     public enum DoorMaterial

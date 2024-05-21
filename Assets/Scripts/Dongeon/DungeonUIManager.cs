@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AG
 {
@@ -16,6 +17,9 @@ namespace AG
 
         [SerializeField]
         private Transform cardPlacementDescription = null;
+
+        [SerializeField]
+        private Transform monsterPlacementPanel = null;
 
         [SerializeField]
         private RaceCard raceCard = null;
@@ -83,6 +87,11 @@ namespace AG
             return cardPlacementPanel;
         }
 
+        public Transform GetMonsterPlacementPanel()
+        {
+            return monsterPlacementPanel;
+        }
+
         public Transform GetCardPlacementDescription()
         {
             return cardPlacementDescription;
@@ -98,7 +107,15 @@ namespace AG
 
         public void CleanDescriptionCard()
         {
-            Destroy(cardPlacementDescription.GetChild(0).gameObject);
+            if(cardPlacementDescription.childCount > 0)
+            {
+                Destroy(cardPlacementDescription.GetChild(0).gameObject);
+            }
+        }
+
+        public void CleanMonsterCard()
+        {
+            Destroy(monsterPlacementPanel.GetChild(0).gameObject);
         }
 
         public RaceCard GetRaceCard()

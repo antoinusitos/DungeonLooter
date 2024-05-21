@@ -19,16 +19,26 @@ namespace AG
         [Header("Start Room")]
         public Card cardObservePrefab = null;
         public Card cardEnterPrefab = null;
-        public Card cardRunAwayPrefab = null;
         public Card cardDescriptionPrefab = null;
 
         [Header("Door")]
-        public Card cardUseObjectPrefab = null;
         public Card cardOpenDoorPrefab = null;
         public Card cardRunAwayDoorPrefab = null;
 
         [Header("Turn Around")]
         public Card cardTurnAroundPrefab = null;
+
+        [Header("Monster")]
+        public Card cardMonsterPrefab = null;
+        public Card cardAttackPrefab = null;
+
+        [Header("Shared")]
+        public Card cardUseObjectPrefab = null;
+        public Card cardRunAwayPrefab = null;
+        public Card cardContinuePrefab = null;
+        public Card cardLootPrefab = null;
+        public Card cardNotLootPrefab = null;
+        public Card cardItemPrefab = null;
 
         private void Awake()
         {

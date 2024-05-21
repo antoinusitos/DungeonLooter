@@ -13,6 +13,8 @@ namespace AG
         {
             CleanGameUI();
 
+            DungeonUIManager.instance.CleanDescriptionCard();
+
             Room currentRoom = DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom();
 
             if (currentRoom.GetLeftDoor())
@@ -111,6 +113,7 @@ namespace AG
 
         public override void OnStateExit()
         {
+            DungeonUIManager.instance.CleanDescriptionCard();
         }
     }
 }

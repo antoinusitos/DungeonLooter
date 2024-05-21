@@ -51,9 +51,15 @@ MonoBehaviour:
   cardBottomPrefab: {fileID: 1495327822484797865, guid: 49cd4e9c520e14a46854c10601dc42fb, type: 3}
   cardObservePrefab: {fileID: 2212952977284037130, guid: 505b7df0f494b194ea7a1af638a4b261, type: 3}
   cardEnterPrefab: {fileID: 517500167418581246, guid: 82194331e4adf104bb198ddb2bd4e23c, type: 3}
-  cardRunAwayPrefab: {fileID: 1451344344209683207, guid: 87895de9f68e5f94faf6e44f9660ac10, type: 3}
   cardDescriptionPrefab: {fileID: 6594431495276819817, guid: 4374460e647724f45a22ee6fe8dbb66e, type: 3}
-  cardUseObjectPrefab: {fileID: 7867533795770981522, guid: e0065c77d399de3499fc262d892d2472, type: 3}
   cardOpenDoorPrefab: {fileID: 3159544037525717921, guid: 08366c3f06e144f45ae9f126d852ddf5, type: 3}
   cardRunAwayDoorPrefab: {fileID: 1451344344209683207, guid: 9c05e031ce1936e4095b9613c674f73f, type: 3}
   cardTurnAroundPrefab: {fileID: 6561071781504480535, guid: 291bee0988652684a85fdc72294a38ca, type: 3}
+  cardMonsterPrefab: {fileID: 1722416911683521205, guid: 471fc44c9e9cb344da7776f641da9887, type: 3}
+  cardAttackPrefab: {fileID: 8799921709339815147, guid: 0a4107a47676e35499b633b8370c594a, type: 3}
+  cardUseObjectPrefab: {fileID: 7867533795770981522, guid: e0065c77d399de3499fc262d892d2472, type: 3}
+  cardRunAwayPrefab: {fileID: 1451344344209683207, guid: 87895de9f68e5f94faf6e44f9660ac10, type: 3}
+  cardContinuePrefab: {fileID: 8091573006192559555, guid: d7f60013ec2672f4998a6875b5b038af, type: 3}
+  cardLootPrefab: {fileID: 8449534637763281321, guid: b0499f7c34a51e04b9c19ac270402fcf, type: 3}
+  cardNotLootPrefab: {fileID: 7648884510257677047, guid: 0fb3bcd44b1a81643b3d9b091481682a, type: 3}
+  cardItemPrefab: {fileID: 5565303375259086229, guid: cb696c901f25a05458d35a2cbf52b0a3, type: 3}

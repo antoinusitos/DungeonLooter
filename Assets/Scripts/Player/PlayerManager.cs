@@ -15,11 +15,13 @@ namespace AG
         private ClassInfo classInfo = null;
 
         private StartingObject startingObject = StartingObject.None;
-        private ItemInfo itemInfo = null;
+        private StartingItemInfo itemInfo = null;
 
         private float currentHP = 0.0f;
         private float currentChance = 0.0f;
         private float currentPerception = 0.0f;
+
+        private float currentDamage = 0.0f;
 
         private void Awake()
         {
@@ -52,6 +54,10 @@ namespace AG
                 {
                     currentPerception = raceInfo.raceStats[raceIndex].value;
                 }
+                else if (raceInfo.raceStats[raceIndex].modifier == Modifier.Damage)
+                {
+                    currentDamage = raceInfo.raceStats[raceIndex].value;
+                }
             }
 
             DungeonUIManager.instance.GetRaceCard().SetRace(raceInfo);
@@ -65,7 +71,7 @@ namespace AG
             DungeonUIManager.instance.GetClassCard().SetClass(classInfo);
         }
 
-        public void SetStartingObject(ItemInfo inItemInfo)
+        public void SetStartingObject(StartingItemInfo inItemInfo)
         {
             itemInfo = inItemInfo;
             startingObject = inItemInfo.itemClass;
@@ -101,6 +107,16 @@ namespace AG
         public StartingObject GetStartingObject()
         {
             return startingObject;
+        }
+
+        public float GetDamage()
+        {
+            return currentDamage;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            currentHP -= damage;
         }
     }
 }
