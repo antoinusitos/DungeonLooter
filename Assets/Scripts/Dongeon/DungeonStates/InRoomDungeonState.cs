@@ -41,6 +41,7 @@ namespace AG
                     DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.eventDungeonStateInstance);
                     break;
                 case RoomType.Chest:
+                    currentRoom.SetRoomType(RoomType.Empty);
                     DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.chestDungeonStateInstance);
                     break;
                 case RoomType.Boss:

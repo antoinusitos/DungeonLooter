@@ -19,6 +19,13 @@ namespace AG
 
         private float currentHP = 0;
 
+        private Vector3 startingPos = Vector3.zero;
+
+        private const float cardSpeed = 5.0f;
+        private const float offset = -300.0f;
+
+        private bool movementDone = true;
+
         public void Setup(MonsterInfo inMonsterInfo)
         {
             monsterInfo = inMonsterInfo;
@@ -55,6 +62,39 @@ namespace AG
                 }
             }
             return 0;
+        }
+
+        public void Attack()
+        {
+            startingPos = transform.position;
+            movementDone = false;
+            StartCoroutine(PlayAttackAnimation());
+        }
+
+        private IEnumerator PlayAttackAnimation()
+        {
+            float timer = 0;
+            while (timer < 1)
+            {
+                transform.position = Vector3.Lerp(startingPos, startingPos + Vector3.up * offset, timer);
+                timer += Time.deltaTime * cardSpeed;
+                yield return null;
+            }
+            timer = 0;
+            while (timer < 1)
+            {
+                transform.position = Vector3.Lerp(startingPos + Vector3.up * 2, startingPos, timer);
+                timer += Time.deltaTime * cardSpeed;
+                yield return null;
+            }
+
+            transform.position = startingPos;
+            movementDone = true;
+        }
+
+        public bool GetMovementDone()
+        {
+            return movementDone;
         }
     }
 }

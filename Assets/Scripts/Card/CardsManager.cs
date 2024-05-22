@@ -31,6 +31,7 @@ namespace AG
         [Header("Monster")]
         public Card cardMonsterPrefab = null;
         public Card cardAttackPrefab = null;
+        public Card cardPlayerPrefab = null;
 
         [Header("Shared")]
         public Card cardUseObjectPrefab = null;
@@ -39,6 +40,7 @@ namespace AG
         public Card cardLootPrefab = null;
         public Card cardNotLootPrefab = null;
         public Card cardItemPrefab = null;
+        public Card cardItemCoinPrefab = null;
 
         private void Awake()
         {

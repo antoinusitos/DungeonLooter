@@ -72,7 +72,9 @@ namespace AG
         Staff,
         Hammer,
         Hat,
-        Ring
+        Ring,
+        Consummable,
+        Coin
     }
 
     public enum DoorDirection

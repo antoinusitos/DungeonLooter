@@ -18,10 +18,15 @@ namespace AG
         private StartingItemInfo itemInfo = null;
 
         private float currentHP = 0.0f;
+        private float maxHP = 0.0f;
         private float currentChance = 0.0f;
         private float currentPerception = 0.0f;
 
         private float currentDamage = 0.0f;
+
+        private PlayerInventory playerInventory = null;
+
+        private const float perfectPerception = 80;
 
         private void Awake()
         {
@@ -35,6 +40,16 @@ namespace AG
             }
         }
 
+        private void Start()
+        {
+            playerInventory = GetComponent<PlayerInventory>();
+        }
+
+        public PlayerInventory GetPlayerInventory()
+        {
+            return playerInventory;
+        }
+
         public void SetRaceInfo(RaceInfo inRaceInfo)
         {
             raceInfo = inRaceInfo;
@@ -45,18 +60,23 @@ namespace AG
                 if (raceInfo.raceStats[raceIndex].modifier == Modifier.HP)
                 {
                     currentHP = raceInfo.raceStats[raceIndex].value;
+                    maxHP = currentHP;
+                    DungeonUIManager.instance.SetHPText(currentHP, maxHP);
                 }
                 else if (raceInfo.raceStats[raceIndex].modifier == Modifier.Chance)
                 {
                     currentChance = raceInfo.raceStats[raceIndex].value;
+                    DungeonUIManager.instance.SetChanceText(currentChance);
                 }
                 else if (raceInfo.raceStats[raceIndex].modifier == Modifier.Perception)
                 {
                     currentPerception = raceInfo.raceStats[raceIndex].value;
+                    DungeonUIManager.instance.SetPerceptionText(currentPerception);
                 }
                 else if (raceInfo.raceStats[raceIndex].modifier == Modifier.Damage)
                 {
                     currentDamage = raceInfo.raceStats[raceIndex].value;
+                    DungeonUIManager.instance.SetDamageText(currentDamage);
                 }
             }
 
@@ -117,6 +137,23 @@ namespace AG
         public void TakeDamage(float damage)
         {
             currentHP -= damage;
+            DungeonUIManager.instance.SetHPText(currentHP, maxHP);
+        }
+
+        public void ModifyDamage(float inValue)
+        {
+            currentDamage += inValue;
+            DungeonUIManager.instance.SetDamageText(currentDamage);
+        }
+
+        public float GetPerfectPerception()
+        {
+            return perfectPerception;
+        }
+
+        public Sprite GetPlayerSprite()
+        {
+            return raceInfo.raceImage;
         }
     }
 }

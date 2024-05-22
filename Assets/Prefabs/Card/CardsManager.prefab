@@ -63,3 +63,4 @@ MonoBehaviour:
   cardLootPrefab: {fileID: 8449534637763281321, guid: b0499f7c34a51e04b9c19ac270402fcf, type: 3}
   cardNotLootPrefab: {fileID: 7648884510257677047, guid: 0fb3bcd44b1a81643b3d9b091481682a, type: 3}
   cardItemPrefab: {fileID: 5565303375259086229, guid: cb696c901f25a05458d35a2cbf52b0a3, type: 3}
+  cardItemCoinPrefab: {fileID: 4081691601450359880, guid: 8e418f12591f89c40bb9c4da54a69948, type: 3}

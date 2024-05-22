@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AG
 {
@@ -20,6 +20,8 @@ namespace AG
 
         [SerializeField]
         private Transform monsterPlacementPanel = null;
+        [SerializeField]
+        private Transform playerPlacementPanel = null;
 
         [SerializeField]
         private RaceCard raceCard = null;
@@ -31,7 +33,25 @@ namespace AG
         [Header("Loading")]
         [SerializeField]
         private RectTransform loadingImage = null;
-        private float loadingShowSpeed = 2.0f;
+        private const float loadingShowSpeed = 2.0f;
+
+        [Header("Inventory")]
+        [SerializeField]
+        private Transform inventoryPanel = null;
+        [SerializeField]
+        private Transform equippedPanel = null;
+
+        [Header("Inventory")]
+        [SerializeField]
+        private TextMeshProUGUI hpText = null;
+        [SerializeField]
+        private TextMeshProUGUI damageText = null;
+        [SerializeField]
+        private TextMeshProUGUI chanceText = null;
+        [SerializeField]
+        private TextMeshProUGUI perceptionText = null;
+        [SerializeField]
+        private TextMeshProUGUI coinsText = null;
 
         private void Awake()
         {
@@ -75,6 +95,8 @@ namespace AG
                 timer += Time.deltaTime * loadingShowSpeed;
                 yield return null;
             }
+
+            loadingImage.anchoredPosition = new Vector2(0, 1081.0f);
         }
 
         public Transform GetGameUI()
@@ -95,6 +117,11 @@ namespace AG
         public Transform GetCardPlacementDescription()
         {
             return cardPlacementDescription;
+        }
+
+        public Transform GetPlayerPlacementPanel()
+        {
+            return playerPlacementPanel;
         }
 
         public void CleanGameUI()
@@ -118,6 +145,11 @@ namespace AG
             Destroy(monsterPlacementPanel.GetChild(0).gameObject);
         }
 
+        public void CleanPlayerCard()
+        {
+            Destroy(playerPlacementPanel.GetChild(0).gameObject);
+        }
+
         public RaceCard GetRaceCard()
         {
             return raceCard;
@@ -131,6 +163,41 @@ namespace AG
         public StartingObjectCard GetStartingObjectCard()
         {
             return startingObjectCard;
+        }
+
+        public Transform GetInventoryPanel()
+        {
+            return inventoryPanel;
+        }
+
+        public Transform GetEquippedPanel()
+        {
+            return equippedPanel;
+        }
+
+        public void SetDamageText(float value)
+        {
+            damageText.text = value.ToString();
+        }
+
+        public void SetChanceText(float value)
+        {
+            chanceText.text = value.ToString();
+        }
+
+        public void SetPerceptionText(float value)
+        {
+            perceptionText.text = value.ToString();
+        }
+
+        public void SetCoinsText(float value)
+        {
+            coinsText.text = value.ToString();
+        }
+
+        public void SetHPText(float value, float max)
+        {
+            hpText.text = value.ToString() + "/" + max.ToString();
         }
     }
 }

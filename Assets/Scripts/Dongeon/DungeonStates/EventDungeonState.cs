@@ -16,6 +16,7 @@ namespace AG
 
             Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
             cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "EVENT !";
+            DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom().SetRoomType(RoomType.Empty);
             DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.endRoomDungeonStateInstance);
         }
 
