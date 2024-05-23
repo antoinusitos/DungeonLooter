@@ -13,6 +13,8 @@ namespace AG
 
         private DoorType doorType = DoorType.None;
 
+        private DoorMaterial doorMaterial = DoorMaterial.Wood;
+
         private bool isTargeted = false;
 
         private float targetValue = 0.0f;
@@ -61,6 +63,16 @@ namespace AG
             return doorDirection;
         }
 
+        public DoorMaterial GetDoorMaterial()
+        {
+            return doorMaterial;
+        }
+
+        public DoorType GetDoorType()
+        {
+            return doorType;
+        }
+
         public Room GetRoom1()
         {
             return room1;
@@ -87,6 +99,11 @@ namespace AG
         public void SetDoorType(DoorType inDoorType)
         {
             doorType = inDoorType;
+        }
+
+        public void SetDoorMaterial(DoorMaterial inDoorMaterial)
+        {
+            doorMaterial = inDoorMaterial;
         }
     }
 }

@@ -129,6 +129,9 @@ namespace AG
                 {
                     doors[doorIndex].SetDoorDirection(DoorDirection.MonoDirectionnal);
                 }
+
+                doors[doorIndex].GetComponentInChildren<Renderer>().material.color = Color.black;
+                doors[doorIndex].SetDoorType((DoorType)Random.Range(1, 3));
             }
 
             List<Room> potentialBossRoom = new List<Room>();
@@ -179,6 +182,11 @@ namespace AG
                 {
                     potentialBossRoom[roomIndex].SetRoomType(RoomType.Boss);
                     potentialBossRoom[roomIndex].GetComponentInChildren<Renderer>().material.color = Color.green;
+                    Door[] doors = potentialBossRoom[roomIndex].GetDoors();
+                    for (int doorIndex = 0; doorIndex < doors.Length; doorIndex++)
+                    {
+                        doors[doorIndex].SetDoorMaterial(DoorMaterial.Gold);
+                    }
                     break;
                 }
             }
@@ -187,10 +195,7 @@ namespace AG
             {
                 for (int x = 0; x < dungeonRows; x++)
                 {
-                    if(!generatedRooms[y * dungeonRows + x].GetIsUsed())
-                    {
-                        generatedRooms[y * dungeonRows + x].GetComponentInChildren<Renderer>().material.color = Color.black;
-                    }
+                    generatedRooms[y * dungeonRows + x].GetComponentInChildren<Renderer>().material.color = Color.black;
                 }
             }
         }

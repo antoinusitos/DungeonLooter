@@ -16,11 +16,20 @@ namespace AG
 
             DungeonUIManager.instance.CleanDescriptionCard();
             Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
-            cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You face a door.";
+            cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You face a " + DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor().GetDoorMaterial() + " door.";
 
             if(DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor().GetDoorDirection() == DoorDirection.MonoDirectionnal)
             {
                 cardDesc.GetComponentInChildren<TextMeshProUGUI>().text += "\nYou see that the door is one way.";
+            }
+
+            if(DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor().GetDoorType() == DoorType.Trapped)
+            {
+                float rand = Random.Range(0f, 100f);
+                if(rand <= PlayerManager.instance.GetCurrentChance())
+                {
+                    cardDesc.GetComponentInChildren<TextMeshProUGUI>().text += "\nYour senses tell you that this door is trapped";
+                }
             }
 
             cardDesc.GetComponentInChildren<TextMeshProUGUI>().text += "\n\nWhat do you do ?";

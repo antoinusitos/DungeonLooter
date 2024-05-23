@@ -47,7 +47,7 @@ namespace AG
 
                         CleanGameUI();
 
-                        Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
+                        cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
                         cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "Which way to go to ?";
 
                         DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom().SetRoomType(RoomType.Empty);
@@ -66,6 +66,17 @@ namespace AG
 
                 case CardType.UseObject:
                     PlayerManager.instance.GetPlayerInventory().ActivateCards();
+                    break;
+                case CardType.RunAwayRoom:
+                    DungeonUIManager.instance.CleanDescriptionCard();
+
+                    CleanGameUI();
+
+                    cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
+                    cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "Which way to go to ?";
+
+                    DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom().SetRoomType(RoomType.Empty);
+                    DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.endRoomDungeonStateInstance);
                     break;
             }
             return null;
