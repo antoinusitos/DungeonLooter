@@ -207,12 +207,14 @@ namespace AG
                 if (buttonInventory)
                 {
                     buttonInventory.interactable = true;
+                    inventory[inventoryIndex].transform.position += Vector3.up * 10;
                 }
             }
 
             Button button = DungeonUIManager.instance.GetStartingObjectCard().GetComponent<Button>();
             if (button)
             {
+                button.transform.position += Vector3.up * 10;
                 button.interactable = true;
             }
         }
@@ -229,12 +231,14 @@ namespace AG
                 if (buttonInventory)
                 {
                     buttonInventory.interactable = false;
+                    inventory[inventoryIndex].transform.position -= Vector3.up * 10;
                 }
             }
 
             Button button = DungeonUIManager.instance.GetStartingObjectCard().GetComponent<Button>();
             if (button)
             {
+                button.transform.position -= Vector3.up * 10;
                 button.interactable = false;
             }
         }
