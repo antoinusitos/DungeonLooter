@@ -112,6 +112,9 @@ namespace AG
         Continue,
         Loot,
         NotLoot,
+        SealedLetter,
+        UseObject,
+        Equipment,
     }
 
     public enum DoorMaterial
@@ -142,5 +145,13 @@ namespace AG
 
         MAX,
         Boss,
+    }
+
+    public enum EventType
+    {
+        LostElf,
+        Dwarf,
+
+        MAX
     }
 }

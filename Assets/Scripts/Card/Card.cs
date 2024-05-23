@@ -110,6 +110,14 @@ namespace AG
             DungeonGeneratorManager.instance.GetDungeonFlow().ReceiveCardType(cardType);
         }
 
+        public void SetCardType(CardType newCardType)
+        {
+            cardType = newCardType;
+        }
 
+        public CardType GetCardType()
+        {
+            return cardType;
+        }
     }
 }

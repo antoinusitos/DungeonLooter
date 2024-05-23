@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace AG
@@ -14,10 +13,7 @@ namespace AG
 
             DungeonUIManager.instance.CleanDescriptionCard();
 
-            Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
-            cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "EVENT !";
-            DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom().SetRoomType(RoomType.Empty);
-            DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.endRoomDungeonStateInstance);
+            DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonEventsManager.instance.eventsInstance[Random.Range(0, DungeonEventsManager.instance.eventsInstance.Length)]);
         }
 
         public override DungeonState ReceiveCardType(CardType cardType)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AG
 {
@@ -17,7 +18,23 @@ namespace AG
         private ItemCard ringItem = null;
         private ItemCard shieldItem = null;
 
-        private int coins = 0;
+        private int coins = 0; //This must be saved
+
+        public void CleanInventory()
+        {
+            for(int inventoryIndex = 0; inventoryIndex < inventory.Count; inventoryIndex++)
+            {
+                Destroy(inventory[inventoryIndex].gameObject);
+            }
+
+            inventory.Clear();
+            weapon = null;
+            headItem = null;
+            feetItem = null;
+            bodyItem = null;
+            ringItem = null;
+            shieldItem = null;
+        }
 
         public void AddItemToInventory(ItemCard newItem)
         {
@@ -176,6 +193,50 @@ namespace AG
         {
             coins += value;
             DungeonUIManager.instance.SetCoinsText(coins);
+        }
+
+        public void ActivateCards()
+        {
+            for (int inventoryIndex = 0; inventoryIndex < inventory.Count; inventoryIndex++)
+            {
+                if (inventory[inventoryIndex].GetCardType() == CardType.Equipment)
+                {
+                    continue;
+                }
+                Button buttonInventory = inventory[inventoryIndex].GetComponent<Button>();
+                if (buttonInventory)
+                {
+                    buttonInventory.interactable = true;
+                }
+            }
+
+            Button button = DungeonUIManager.instance.GetStartingObjectCard().GetComponent<Button>();
+            if (button)
+            {
+                button.interactable = true;
+            }
+        }
+
+        public void DesactivateCards()
+        {
+            for (int inventoryIndex = 0; inventoryIndex < inventory.Count; inventoryIndex++)
+            {
+                if(inventory[inventoryIndex].GetCardType() == CardType.Equipment)
+                {
+                    continue;
+                }
+                Button buttonInventory = inventory[inventoryIndex].GetComponent<Button>();
+                if (buttonInventory)
+                {
+                    buttonInventory.interactable = false;
+                }
+            }
+
+            Button button = DungeonUIManager.instance.GetStartingObjectCard().GetComponent<Button>();
+            if (button)
+            {
+                button.interactable = false;
+            }
         }
     }
 }

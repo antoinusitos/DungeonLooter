@@ -141,6 +141,7 @@ namespace AG
 
             if(currentHP <= 0)
             {
+                playerInventory.CleanInventory();
                 DungeonUIManager.instance.ShowEndLoadingScreen();
             }
         }

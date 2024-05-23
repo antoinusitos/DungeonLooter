@@ -72,7 +72,7 @@ namespace AG
         public void SetIsUsed()
         {
             isActive = true;
-            GetComponentInChildren<Renderer>().material.color = Color.white;
+            //GetComponentInChildren<Renderer>().material.color = Color.white;
         }
 
         public bool GetIsUsed()

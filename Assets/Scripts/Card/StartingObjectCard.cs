@@ -33,6 +33,17 @@ namespace AG
 
                 objectStats.text += statDesc + "\n";
             }
+
+            switch(itemInfo.itemClass)
+            {
+                case StartingObject.SealedLetter:
+                    Card card = gameObject.AddComponent<Card>();
+                    card.SetCardType(CardType.SealedLetter);
+                    Button button = gameObject.AddComponent<Button>();
+                    button.interactable = false;
+                    button.onClick.AddListener(delegate { card.SendCardType(); });
+                    break;
+            }
         }
     }
 }

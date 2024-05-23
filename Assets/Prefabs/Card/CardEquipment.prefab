@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06836db8133e67d44900f1efeb3d8b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 0
+  cardType: 17
   speed: 2
   upFace: {fileID: 0}
   downFace: {fileID: 0}
