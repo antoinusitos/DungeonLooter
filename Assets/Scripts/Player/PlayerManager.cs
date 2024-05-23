@@ -138,6 +138,11 @@ namespace AG
         {
             currentHP -= damage;
             DungeonUIManager.instance.SetHPText(currentHP, maxHP);
+
+            if(currentHP <= 0)
+            {
+                DungeonUIManager.instance.ShowEndLoadingScreen();
+            }
         }
 
         public void ModifyDamage(float inValue)

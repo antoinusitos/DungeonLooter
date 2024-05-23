@@ -39,6 +39,13 @@ namespace AG
             }
         }
 
+        public void DestroyDungeon()
+        {
+            Destroy(instantiatedDungeon.gameObject);
+            Destroy(dungeonFlow.gameObject);
+            currentRoomNumber = 0;
+        }
+
         public void GenerateDungeon()
         {
             //DEBUG

@@ -9,6 +9,8 @@ namespace AG
     {
         public static DungeonUIManager instance = null;
 
+        private StartScreen startScreen = null;
+
         [SerializeField]
         private Transform gameUI = null;
 
@@ -82,9 +84,52 @@ namespace AG
 
             loadingImage.anchoredPosition = Vector2.zero;
 
-            FindObjectOfType<StartScreen>().gameObject.SetActive(false);
+            if(!startScreen)
+            {
+                startScreen = FindObjectOfType<StartScreen>();
+            }
+            startScreen.gameObject.SetActive(false);
 
              DungeonGeneratorManager.instance.GenerateDungeon();
+
+            yield return new WaitForSeconds(2);
+
+            timer = 0f;
+            while (timer < 1)
+            {
+                loadingImage.anchoredPosition = new Vector2(0, timer * 1080.0f);
+                timer += Time.deltaTime * loadingShowSpeed;
+                yield return null;
+            }
+
+            loadingImage.anchoredPosition = new Vector2(0, 1081.0f);
+        }
+
+        public void ShowEndLoadingScreen()
+        {
+            StartCoroutine("ShowingEndLoadingScreen");
+        }
+
+        private IEnumerator ShowingEndLoadingScreen()
+        {
+            float timer = 0f;
+            while (timer < 1)
+            {
+                loadingImage.anchoredPosition = new Vector2(0, 1080.0f - (timer * 1080.0f));
+                timer += Time.deltaTime * loadingShowSpeed;
+                yield return null;
+            }
+
+            loadingImage.anchoredPosition = Vector2.zero;
+
+            CleanDescriptionCard();
+            CleanGameUI();
+            CleanMonsterCard();
+            CleanPlayerCard();
+
+            DungeonGeneratorManager.instance.DestroyDungeon();
+
+            startScreen.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(2);
 

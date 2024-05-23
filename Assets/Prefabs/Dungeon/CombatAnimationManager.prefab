@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5193146352498399062
+--- !u!1 &9020654535694053744
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5193146352498399060}
-  - component: {fileID: 5193146352498399061}
+  - component: {fileID: 9020654535694053746}
+  - component: {fileID: 9020654535694053745}
   m_Layer: 0
-  m_Name: MonstersManager
+  m_Name: CombatAnimationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5193146352498399060
+--- !u!4 &9020654535694053746
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193146352498399062}
+  m_GameObject: {fileID: 9020654535694053744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,19 +32,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5193146352498399061
+--- !u!114 &9020654535694053745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193146352498399062}
+  m_GameObject: {fileID: 9020654535694053744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3235ce3326078774eb7965720c2e7e97, type: 3}
+  m_Script: {fileID: 11500000, guid: dc06f03c0720eac45845802d9ae67fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterInfos:
-  - {fileID: 11400000, guid: 975dd7d65245dc54ea701a57fe9be43b, type: 2}
-  - {fileID: 11400000, guid: 147a405c5eb8c654196e329594d768ad, type: 2}
-  - {fileID: 11400000, guid: 87b042a7ae348854ea45f27e9136c11c, type: 2}
