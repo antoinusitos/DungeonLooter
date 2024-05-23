@@ -614,11 +614,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6662315470355957940, guid: a067baae754880d468a7d4eed1543208, type: 3}
   m_PrefabInstance: {fileID: 6662315471226584516}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1373107978 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1250313872666684056, guid: a067baae754880d468a7d4eed1543208, type: 3}
-  m_PrefabInstance: {fileID: 6662315471226584516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1266687325333168319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1165,7 +1160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193146352498399061, guid: 8361ef85802e3db47bf24363fdeb775e, type: 3}
       propertyPath: monsterInfos.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5193146352498399061, guid: 8361ef85802e3db47bf24363fdeb775e, type: 3}
       propertyPath: monsterInfos.Array.data[0]
@@ -1174,7 +1169,11 @@ PrefabInstance:
     - target: {fileID: 5193146352498399061, guid: 8361ef85802e3db47bf24363fdeb775e, type: 3}
       propertyPath: monsterInfos.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 87b042a7ae348854ea45f27e9136c11c, type: 2}
+      objectReference: {fileID: 11400000, guid: 147a405c5eb8c654196e329594d768ad, type: 2}
+    - target: {fileID: 5193146352498399061, guid: 8361ef85802e3db47bf24363fdeb775e, type: 3}
+      propertyPath: monsterInfos.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 975dd7d65245dc54ea701a57fe9be43b, type: 2}
     - target: {fileID: 5193146352498399062, guid: 8361ef85802e3db47bf24363fdeb775e, type: 3}
       propertyPath: m_Name
       value: MonstersManager
@@ -1206,19 +1205,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 354349506, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 354349506, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 354349506, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 354349506, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 405355513, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1316,10 +1315,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1785654514, guid: a067baae754880d468a7d4eed1543208, type: 3}
-      propertyPath: playerPlacementPanel
-      value: 
-      objectReference: {fileID: 1373107978}
     - target: {fileID: 1919340468, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1432,10 +1427,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6685131822447075014, guid: a067baae754880d468a7d4eed1543208, type: 3}
-      propertyPath: m_Name
-      value: PlayerCardPlacement
-      objectReference: {fileID: 0}
+    - target: {fileID: 7312437636902684342, guid: a067baae754880d468a7d4eed1543208, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b2e00b08d6238764688d2ef0a52812a5, type: 2}
     - target: {fileID: 7312437637950990278, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1489,10 +1484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7013443305689963464, guid: 5a8e6b8a2b9197b4aa99553334509399, type: 3}
-      propertyPath: cardPlayerPrefab
-      value: 
-      objectReference: {fileID: 1722416911683521205, guid: bceb52a9bf864e54c943ee919a4ec38d, type: 3}
     - target: {fileID: 7013443305689963465, guid: 5a8e6b8a2b9197b4aa99553334509399, type: 3}
       propertyPath: m_RootOrder
       value: 11

@@ -161,5 +161,20 @@ namespace AG
         {
             return raceInfo.raceImage;
         }
+
+        public void RefillHP(float value)
+        {
+            currentHP += value;
+            currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+            DungeonUIManager.instance.SetHPText(currentHP, maxHP);
+            if(DungeonUIManager.instance.GetPlayerPlacementPanel().childCount > 0)
+            {
+                Transform playerCard = DungeonUIManager.instance.GetPlayerPlacementPanel().GetChild(0);
+                if (playerCard)
+                {
+                    playerCard.GetComponent<PlayerCard>().SetHP(currentHP);
+                }
+            }
+        }
     }
 }

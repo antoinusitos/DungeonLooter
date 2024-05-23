@@ -16,6 +16,8 @@ namespace AG
         private TextMeshProUGUI monsterNameText = null;
         [SerializeField]
         private TextMeshProUGUI monsterHPText = null;
+        [SerializeField]
+        private TextMeshProUGUI monsterDamageText = null;
 
         private float currentHP = 0;
 
@@ -37,6 +39,10 @@ namespace AG
                 {
                     currentHP = monsterInfo.monsterStats[statIndex].value;
                     monsterHPText.text = currentHP.ToString();
+                }
+                else if(monsterInfo.monsterStats[statIndex].modifier == Modifier.Damage)
+                {
+                    monsterDamageText.text = monsterInfo.monsterStats[statIndex].value.ToString();
                 }
             }
         }

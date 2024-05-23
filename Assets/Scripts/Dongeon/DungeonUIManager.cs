@@ -21,6 +21,9 @@ namespace AG
         private Transform cardPlacementDescription = null;
 
         [SerializeField]
+        private Transform cardPlacementScore = null;
+
+        [SerializeField]
         private Transform monsterPlacementPanel = null;
         [SerializeField]
         private Transform playerPlacementPanel = null;
@@ -124,6 +127,7 @@ namespace AG
 
             CleanDescriptionCard();
             CleanGameUI();
+            CleanScoreCard();
             CleanMonsterCard();
             CleanPlayerCard();
 
@@ -187,12 +191,26 @@ namespace AG
 
         public void CleanMonsterCard()
         {
-            Destroy(monsterPlacementPanel.GetChild(0).gameObject);
+            if (monsterPlacementPanel.childCount > 0)
+            {
+                Destroy(monsterPlacementPanel.GetChild(0).gameObject);
+            }
         }
 
         public void CleanPlayerCard()
         {
-            Destroy(playerPlacementPanel.GetChild(0).gameObject);
+            if (playerPlacementPanel.childCount > 0)
+            {
+                Destroy(playerPlacementPanel.GetChild(0).gameObject);
+            }
+        }
+
+        public void CleanScoreCard()
+        {
+            if(cardPlacementScore.childCount> 0)
+            {
+                Destroy(cardPlacementScore.GetChild(0).gameObject);
+            }
         }
 
         public RaceCard GetRaceCard()
@@ -208,6 +226,11 @@ namespace AG
         public StartingObjectCard GetStartingObjectCard()
         {
             return startingObjectCard;
+        }
+
+        public Transform GetCardPlacementScore()
+        {
+            return cardPlacementScore;
         }
 
         public Transform GetInventoryPanel()

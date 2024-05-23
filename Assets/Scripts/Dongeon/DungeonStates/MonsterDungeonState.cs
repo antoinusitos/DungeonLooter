@@ -74,22 +74,6 @@ namespace AG
                         CombatAnimationManager.instance.Attack(playerCard, currentMonster);
 
                         return null;
-                        /*playerCard.Attack();
-                        currentMonster.TakeDamage(PlayerManager.instance.GetDamage());
-                        if(currentMonster.GetCurrentHP() <= 0)
-                        {
-                            DungeonUIManager.instance.CleanDescriptionCard();
-                            DungeonUIManager.instance.CleanMonsterCard();
-                            DungeonUIManager.instance.CleanPlayerCard();
-
-                            DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom().SetRoomType(RoomType.Empty);
-
-                            return DungeonStatesManager.instance.chestDungeonStateInstance;
-                        }
-
-                        //monster reply
-                        PlayerManager.instance.TakeDamage(currentMonster.GetDamage());
-                        playerCard.SetHP(PlayerManager.instance.GetCurrentHP());*/
                     }
             }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009f9514b093f9e4ca15b49b6ff15022, type: 3}
   m_Name: PotionStartingItemInfo
   m_EditorClassIdentifier: 
-  equipmentType: 0
+  equipmentType: 11
   itemName: Heal Potion
   itemDescription: A small potion of healing
   itemImage: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}

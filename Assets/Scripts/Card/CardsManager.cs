@@ -41,6 +41,7 @@ namespace AG
         public Card cardNotLootPrefab = null;
         public Card cardItemPrefab = null;
         public Card cardItemCoinPrefab = null;
+        public Card cardScorePrefab = null;
 
         private void Awake()
         {

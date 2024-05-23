@@ -37,11 +37,38 @@ namespace AG
             switch(itemInfo.itemClass)
             {
                 case StartingObject.SealedLetter:
-                    Card card = gameObject.AddComponent<Card>();
-                    card.SetCardType(CardType.SealedLetter);
-                    Button button = gameObject.AddComponent<Button>();
-                    button.interactable = false;
-                    button.onClick.AddListener(delegate { card.SendCardType(); });
+                    {
+                        Card card = gameObject.AddComponent<Card>();
+                        card.SetCardType(CardType.SealedLetter);
+                        Button button = GetComponent<Button>();
+                        if (!button)
+                        {
+                            button = gameObject.AddComponent<Button>();
+                        }
+                        else
+                        {
+                            button.onClick.RemoveAllListeners();
+                        }
+                        button.interactable = false;
+                        button.onClick.AddListener(delegate { card.SendCardType(); });
+                    }
+                    break;
+                case StartingObject.HealPotion:
+                    {
+                        Button button = GetComponent<Button>();
+                        if (!button)
+                        {
+                            button = gameObject.AddComponent<Button>();
+                        }
+                        else
+                        {
+                            button.onClick.RemoveAllListeners();
+                        }
+                        button.onClick.AddListener(delegate { 
+                            PlayerManager.instance.RefillHP(itemInfo.itemStats[0].value); 
+                            Destroy(DungeonUIManager.instance.GetStartingObjectCard().gameObject); 
+                        });
+                    }
                     break;
             }
         }
