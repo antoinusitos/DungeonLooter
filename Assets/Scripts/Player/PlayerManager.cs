@@ -24,6 +24,8 @@ namespace AG
 
         private float currentDamage = 0.0f;
 
+        private float currentCritical = 2;
+
         private PlayerInventory playerInventory = null;
 
         private const float perfectPerception = 80;
@@ -193,6 +195,16 @@ namespace AG
                     playerCard.GetComponent<PlayerCard>().SetHP(currentHP);
                 }
             }
+        }
+
+        public float GetCurrentCritical()
+        {
+            return currentCritical;
+        }
+
+        public void SetCurrentCritical(float value)
+        {
+            currentCritical = value;
         }
     }
 }

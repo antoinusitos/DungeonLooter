@@ -39,11 +39,10 @@ namespace AG
 
             if(skipDoor)
             {
-                DungeonUIManager.instance.CleanDescriptionCard();
                 //Handle Event
+                DungeonUIManager.instance.CleanDescriptionCard();
                 DungeonGeneratorManager.instance.GetDungeon().SetPreviousDoor(DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor());
                 DungeonGeneratorManager.instance.GetDungeon().SetTargetDoor(null);
-                DungeonUIManager.instance.CleanDescriptionCard();
                 DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.startRoomDungeonStateInstance);
                 return;
             }

@@ -11,6 +11,7 @@ namespace AG
         public override void OnStateEnter()
         {
             CleanGameUI();
+            DungeonUIManager.instance.CleanDescriptionCard();
 
             DungeonGeneratorManager.instance.GetDungeon().SetTargetRoom(DungeonGeneratorManager.instance.GetDungeon().GetNextRoom());
 

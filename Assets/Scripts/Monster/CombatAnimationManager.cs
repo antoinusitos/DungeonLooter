@@ -1,4 +1,3 @@
-using AG;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,13 +35,13 @@ namespace AG
                 {
                     rand = Random.Range(0, 100);
                     scoreCard.SetNumber(rand);
-                    if (rand < PlayerManager.instance.GetCurrentChance())
+                    if (rand <= 5)
                     {
                         //player miss
                         scoreCard.SetColor(Color.red);
                         scoreCard.SetDescription("Missed Attack");
                     }
-                    else if (rand > (95 - PlayerManager.instance.GetCurrentChance()))
+                    else if (rand >= (95 - PlayerManager.instance.GetCurrentChance()))
                     {
                         //damage x2
                         scoreCard.SetColor(Color.green);
@@ -69,15 +68,15 @@ namespace AG
                 yield return null;
             }
             float damage = PlayerManager.instance.GetDamage();
-            if(rand < 5)
+            if(rand <= 5)
             {
                 //player miss
                 damage = 0;
             }
-            else if(rand > (95 - PlayerManager.instance.GetCurrentChance()))
+            else if(rand >= (95 - PlayerManager.instance.GetCurrentChance()))
             {
-                //damage x2
-                damage *= 2;
+                //damage x critical
+                damage *= PlayerManager.instance.GetCurrentCritical();
             }
             currentMonster.TakeDamage(damage);
             if (currentMonster.GetCurrentHP() <= 0)
@@ -110,13 +109,13 @@ namespace AG
                     {
                         rand = Random.Range(0, 100);
                         scoreCard.SetNumber(rand);
-                        if (rand < currentMonster.GetCurrentChance())
+                        if (rand <= currentMonster.GetCurrentChance())
                         {
                             //monster miss
                             scoreCard.SetColor(Color.red);
                             scoreCard.SetDescription("Missed Attack");
                         }
-                        else if (rand > 100 - currentMonster.GetCurrentChance())
+                        else if (rand >= 100 - currentMonster.GetCurrentChance())
                         {
                             //damage x2
                             scoreCard.SetColor(Color.green);
@@ -145,12 +144,12 @@ namespace AG
                 //monster reply
 
                 damage = currentMonster.GetDamage();
-                if (rand < currentMonster.GetCurrentChance())
+                if (rand <= currentMonster.GetCurrentChance())
                 {
                     //monster miss
                     damage = 0;
                 }
-                else if (rand > 100 - currentMonster.GetCurrentChance())
+                else if (rand >= 100 - currentMonster.GetCurrentChance())
                 {
                     //monster x2
                     damage *= 2;

@@ -15,6 +15,9 @@ namespace AG
         private Transform gameUI = null;
 
         [SerializeField]
+        private Transform townUI = null;
+
+        [SerializeField]
         private Transform cardPlacementPanel = null;
 
         [SerializeField]
@@ -97,7 +100,46 @@ namespace AG
             }
             startScreen.gameObject.SetActive(false);
 
-             DungeonGeneratorManager.instance.GenerateDungeon();
+            townUI.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(2);
+
+            timer = 0f;
+            while (timer < 1)
+            {
+                loadingImage.anchoredPosition = new Vector2(0, timer * 1080.0f);
+                timer += Time.deltaTime * loadingShowSpeed;
+                yield return null;
+            }
+
+            loadingImage.anchoredPosition = new Vector2(0, 1081.0f);
+        }
+
+        public void ShowLoadingScreenDungeon()
+        {
+            StartCoroutine("ShowingLoadingScreenDungeon");
+        }
+
+        private IEnumerator ShowingLoadingScreenDungeon()
+        {
+            float timer = 0f;
+            while (timer < 1)
+            {
+                loadingImage.anchoredPosition = new Vector2(0, 1080.0f - (timer * 1080.0f));
+                timer += Time.deltaTime * loadingShowSpeed;
+                yield return null;
+            }
+
+            loadingImage.anchoredPosition = Vector2.zero;
+
+            if (!startScreen)
+            {
+                startScreen = FindObjectOfType<StartScreen>();
+            }
+            townUI.gameObject.SetActive(false);
+            gameUI.gameObject.SetActive(true);
+
+            DungeonGeneratorManager.instance.GenerateDungeon();
 
             yield return new WaitForSeconds(2);
 
@@ -199,9 +241,9 @@ namespace AG
 
         public void CleanDescriptionCard()
         {
-            if(cardPlacementDescription.childCount > 0)
+            for(int childIndex = 0; childIndex < cardPlacementDescription.childCount; childIndex++)
             {
-                Destroy(cardPlacementDescription.GetChild(0).gameObject);
+                Destroy(cardPlacementDescription.GetChild(childIndex).gameObject);
             }
         }
 

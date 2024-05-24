@@ -108,7 +108,7 @@ namespace AG
                             PlayerManager.instance.TakeDamage(currentMonster.GetDamage() * 0.1f);
 
                             if (PlayerManager.instance.GetCurrentHP() <= 0)
-                            {
+                            {                                
                                 return null;
                             }
 
