@@ -18,7 +18,7 @@ MonoBehaviour:
   raceImage: {fileID: 21300000, guid: 3a0c527d7f890d64a9b56b086e6e766a, type: 3}
   raceStats:
   - modifier: 1
-    value: 10
+    value: 30
   - modifier: 2
     value: 10
   - modifier: 3

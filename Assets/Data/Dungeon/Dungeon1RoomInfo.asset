@@ -19,3 +19,4 @@ MonoBehaviour:
     chance: 5
   - roomType: 4
     chance: 90
+  bossInfo: {fileID: 11400000, guid: 90aa0d9344061a445bffcb84cbe1bc63, type: 2}

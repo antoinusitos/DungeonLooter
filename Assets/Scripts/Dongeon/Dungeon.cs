@@ -298,5 +298,10 @@ namespace AG
         {
             previousDoor = door;
         }
+
+        public RoomInfo GetRoomInfo()
+        {
+            return roomInfo;
+        }
     }
 }

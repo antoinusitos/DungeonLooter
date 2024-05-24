@@ -15,5 +15,7 @@ namespace AG
     public class RoomInfo : ScriptableObject
     {
         public RoomTypeChance[] roomTypeChances = null;
+
+        public MonsterInfo bossInfo = null;
     }
 }

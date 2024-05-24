@@ -52,8 +52,18 @@ namespace AG
                         {
                             DungeonUIManager.instance.CleanDescriptionCard();
                             Room currentRoom = DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom();
+
                             currentMonster = Instantiate(CardsManager.instance.cardMonsterPrefab, DungeonUIManager.instance.GetMonsterPlacementPanel()).GetComponent<Monster>();
-                            currentMonster.Setup(currentRoom.GetMonsterInfoAssociated());
+
+                            if (currentRoom.GetRoomType() == RoomType.Boss)
+                            {
+                                currentMonster.Setup(DungeonGeneratorManager.instance.GetDungeon().GetRoomInfo().bossInfo);
+                            }
+                            else
+                            {
+                                currentMonster.Setup(currentRoom.GetMonsterInfoAssociated());
+                            }
+                            
                             currentMonster.GetComponent<Card>().ShowDownFace();
                             currentMonster.GetComponent<Card>().ReturnCard();
 
