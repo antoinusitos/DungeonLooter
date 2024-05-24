@@ -78,6 +78,41 @@ namespace AG
                         waitForEndOfCombat = true;
                         return null;
                     }
+                case CardType.RunAwayRoom:
+                    {
+                        int rand = Random.Range(0, 100);
+                        if(rand <= PlayerManager.instance.GetCurrentChance())
+                        {
+                            DungeonUIManager.instance.CleanDescriptionCard();
+                            DungeonUIManager.instance.CleanMonsterCard();
+                            DungeonUIManager.instance.CleanPlayerCard();
+                            DungeonUIManager.instance.CleanScoreCard();
+
+                            Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
+                            cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You successfully escape from the monster. \n\nWhich way to go to ?";
+
+                            return DungeonStatesManager.instance.endRoomDungeonStateInstance;
+                        }
+                        else
+                        {
+                            PlayerManager.instance.TakeDamage(currentMonster.GetDamage() * 0.1f);
+
+                            if (PlayerManager.instance.GetCurrentHP() <= 0)
+                            {
+                                return null;
+                            }
+
+                            DungeonUIManager.instance.CleanDescriptionCard();
+                            DungeonUIManager.instance.CleanMonsterCard();
+                            DungeonUIManager.instance.CleanPlayerCard();
+                            DungeonUIManager.instance.CleanScoreCard();
+
+                            Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
+                            cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You escape from the monster but you are hurt during your run. \n\nWhich way to go to ?";
+
+                            return DungeonStatesManager.instance.endRoomDungeonStateInstance;
+                        }
+                    }
             }
 
             return null;
@@ -102,6 +137,7 @@ namespace AG
 
         public override void OnStateExit()
         {
+            waitForEndOfCombat = false;
         }
     }
 }

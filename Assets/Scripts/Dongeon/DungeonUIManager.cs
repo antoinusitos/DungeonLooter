@@ -40,6 +40,10 @@ namespace AG
         private RectTransform loadingImage = null;
         private const float loadingShowSpeed = 2.0f;
 
+        [Header("Loading")]
+        [SerializeField]
+        private RectTransform deadImage = null;
+
         [Header("Inventory")]
         [SerializeField]
         private Transform inventoryPanel = null;
@@ -118,6 +122,16 @@ namespace AG
             float timer = 0f;
             while (timer < 1)
             {
+                deadImage.anchoredPosition = new Vector2(0, 1080.0f - (timer * 1080.0f));
+                timer += Time.deltaTime * loadingShowSpeed;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(1);
+
+            timer = 0f;
+            while (timer < 1)
+            {
                 loadingImage.anchoredPosition = new Vector2(0, 1080.0f - (timer * 1080.0f));
                 timer += Time.deltaTime * loadingShowSpeed;
                 yield return null;
@@ -140,11 +154,13 @@ namespace AG
             timer = 0f;
             while (timer < 1)
             {
+                deadImage.anchoredPosition = new Vector2(0, timer * 1080.0f);
                 loadingImage.anchoredPosition = new Vector2(0, timer * 1080.0f);
                 timer += Time.deltaTime * loadingShowSpeed;
                 yield return null;
             }
 
+            deadImage.anchoredPosition = new Vector2(0, 1081.0f);
             loadingImage.anchoredPosition = new Vector2(0, 1081.0f);
         }
 

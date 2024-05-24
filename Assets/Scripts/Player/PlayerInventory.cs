@@ -87,6 +87,10 @@ namespace AG
                     SwapCardToInventory(headItem);
                     headItem = newItem;
                     break;
+                case EquipmentType.Helmet:
+                    SwapCardToInventory(headItem);
+                    headItem = newItem;
+                    break;
                 default:
                     canEquip = false;
                     break;
@@ -144,6 +148,10 @@ namespace AG
                     SwapCardToInventory(headItem);
                     headItem = null;
                     break;
+                case EquipmentType.Helmet:
+                    SwapCardToInventory(headItem);
+                    headItem = null;
+                    break;
             }
         }
 
@@ -166,6 +174,15 @@ namespace AG
                         case Modifier.Damage:
                             PlayerManager.instance.ModifyDamage(-card.GetItemInfo().itemStats[statIndex].value);
                             break;
+                        case Modifier.Perception:
+                            PlayerManager.instance.ModifyPerception(-card.GetItemInfo().itemStats[statIndex].value);
+                            break;
+                        case Modifier.HP:
+                            PlayerManager.instance.ModifyHPMax(-card.GetItemInfo().itemStats[statIndex].value);
+                            break;
+                        case Modifier.Chance:
+                            PlayerManager.instance.ModifyChance(-card.GetItemInfo().itemStats[statIndex].value);
+                            break;
                     }
                 }
             }
@@ -183,6 +200,15 @@ namespace AG
                     {
                         case Modifier.Damage:
                             PlayerManager.instance.ModifyDamage(card.GetItemInfo().itemStats[statIndex].value);
+                            break;
+                        case Modifier.Perception:
+                            PlayerManager.instance.ModifyPerception(card.GetItemInfo().itemStats[statIndex].value);
+                            break;
+                        case Modifier.HP:
+                            PlayerManager.instance.ModifyHPMax(card.GetItemInfo().itemStats[statIndex].value);
+                            break;
+                        case Modifier.Chance:
+                            PlayerManager.instance.ModifyChance(card.GetItemInfo().itemStats[statIndex].value);
                             break;
                     }
                 }

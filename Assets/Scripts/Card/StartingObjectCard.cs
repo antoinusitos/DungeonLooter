@@ -34,7 +34,9 @@ namespace AG
                 objectStats.text += statDesc + "\n";
             }
 
-            switch(itemInfo.itemClass)
+            DungeonUIManager.instance.GetStartingObjectCard().gameObject.SetActive(true);
+
+            switch (itemInfo.itemClass)
             {
                 case StartingObject.SealedLetter:
                     {
@@ -66,7 +68,7 @@ namespace AG
                         }
                         button.onClick.AddListener(delegate { 
                             PlayerManager.instance.RefillHP(itemInfo.itemStats[0].value); 
-                            Destroy(DungeonUIManager.instance.GetStartingObjectCard().gameObject); 
+                            DungeonUIManager.instance.GetStartingObjectCard().gameObject.SetActive(false); 
                         });
                     }
                     break;

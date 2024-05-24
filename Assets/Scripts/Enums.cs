@@ -74,7 +74,9 @@ namespace AG
         Hat,
         Ring,
         Consummable,
-        Coin
+        Coin,
+        Helmet,
+        Useless
     }
 
     public enum DoorDirection

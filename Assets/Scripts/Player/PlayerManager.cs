@@ -152,6 +152,24 @@ namespace AG
             DungeonUIManager.instance.SetDamageText(currentDamage);
         }
 
+        public void ModifyChance(float inValue)
+        {
+            currentChance += inValue;
+            DungeonUIManager.instance.SetChanceText(currentChance);
+        }
+
+        public void ModifyPerception(float inValue)
+        {
+            currentPerception += inValue;
+            DungeonUIManager.instance.SetPerceptionText(currentPerception);
+        }
+
+        public void ModifyHPMax(float inValue)
+        {
+            maxHP += inValue;
+            DungeonUIManager.instance.SetHPText(currentHP, maxHP);
+        }
+
         public float GetPerfectPerception()
         {
             return perfectPerception;

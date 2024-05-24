@@ -13,8 +13,6 @@ namespace AG
         {
             CleanGameUI();
 
-            DungeonUIManager.instance.CleanDescriptionCard();
-
             Room currentRoom = DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom();
 
             if (currentRoom.GetLeftDoor())
