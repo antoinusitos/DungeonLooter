@@ -11,6 +11,8 @@ namespace AG
         private Monster currentMonster = null;
         private PlayerCard playerCard = null;
 
+        private bool waitForEndOfCombat = false;
+
         public override void OnStateEnter()
         {
             CleanGameUI();
@@ -71,13 +73,31 @@ namespace AG
                     break;
                 case CardType.Attack:
                     {
+                        DungeonUIManager.instance.CleanGameUI();
                         CombatAnimationManager.instance.Attack(playerCard, currentMonster);
-
+                        waitForEndOfCombat = true;
                         return null;
                     }
             }
 
             return null;
+        }
+
+        public override void OnStateUpdate()
+        {
+            if(waitForEndOfCombat)
+            {
+                if(!CombatAnimationManager.instance.GetIsAttacking())
+                {
+                    waitForEndOfCombat = false;
+                    if (currentMonster && currentMonster.GetCurrentHP() > 0)
+                    {
+                        Instantiate(CardsManager.instance.cardAttackPrefab, DungeonUIManager.instance.GetCardPlacementPanel());
+                        Instantiate(CardsManager.instance.cardUseObjectPrefab, DungeonUIManager.instance.GetCardPlacementPanel());
+                        Instantiate(CardsManager.instance.cardRunAwayPrefab, DungeonUIManager.instance.GetCardPlacementPanel());
+                    }
+                }
+            }
         }
 
         public override void OnStateExit()

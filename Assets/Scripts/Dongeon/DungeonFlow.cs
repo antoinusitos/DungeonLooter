@@ -27,6 +27,14 @@ namespace AG
             }
         }
 
+        private void Update()
+        {
+            if (currentDungeonState)
+            {
+                currentDungeonState.OnStateUpdate();
+            }
+        }
+
         public void ReceiveCardType(CardType cardType)
         {
             if(currentDungeonState)

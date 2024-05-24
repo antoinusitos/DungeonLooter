@@ -21,6 +21,11 @@ namespace AG
             return null;
         }
 
+        public virtual void OnStateUpdate()
+        {
+
+        }
+
         public virtual void OnStateExit()
         {
 

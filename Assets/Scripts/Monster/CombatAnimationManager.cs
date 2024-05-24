@@ -10,6 +10,8 @@ namespace AG
     {
         public static CombatAnimationManager instance = null;
 
+        private bool isAttacking = false;
+
         private void Start()
         {
             instance = this;
@@ -17,6 +19,7 @@ namespace AG
 
         public void Attack(PlayerCard playerCard, Monster currentMonster)
         {
+            isAttacking = true;
             StartCoroutine(AttackFlow(playerCard, currentMonster));
         }
 
@@ -86,6 +89,7 @@ namespace AG
                 DungeonGeneratorManager.instance.GetDungeon().GetCurrentRoom().SetRoomType(RoomType.Empty);
 
                 DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.chestDungeonStateInstance);
+                isAttacking = false;
             }
             else
             {
@@ -151,7 +155,14 @@ namespace AG
                 PlayerManager.instance.TakeDamage(damage);
                 playerCard.SetHP(PlayerManager.instance.GetCurrentHP());
                 DungeonUIManager.instance.CleanScoreCard();
+
+                isAttacking = false;
             }
+        }
+
+        public bool GetIsAttacking()
+        {
+            return isAttacking;
         }
     }
 }
