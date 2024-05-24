@@ -44,6 +44,19 @@ namespace AG
 
         public void EquipItem(ItemCard newItem)
         {
+            if(newItem.GetItemInfo().equipmentType == EquipmentType.Consummable)
+            {
+                for(int statIndex = 0; statIndex < newItem.GetItemInfo().itemStats.Length; statIndex++)
+                {
+                    if (newItem.GetItemInfo().itemStats[statIndex].modifier == Modifier.HP)
+                    {
+                        PlayerManager.instance.RefillHP(newItem.GetItemInfo().itemStats[statIndex].value);
+                    }
+                }
+                Destroy(newItem.gameObject);
+                return;
+            }
+
             bool canEquip = true;
             switch (newItem.GetItemInfo().equipmentType)
             {
