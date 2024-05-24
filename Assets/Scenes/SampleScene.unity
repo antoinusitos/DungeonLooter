@@ -1017,6 +1017,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4808864439199315946, guid: 841de6037f2108448820ae80e8dfa3f1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4808864439199315947, guid: 841de6037f2108448820ae80e8dfa3f1, type: 3}
       propertyPath: loadingImage
       value: 
@@ -1467,6 +1471,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6662315471543247119, guid: a067baae754880d468a7d4eed1543208, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7312437637950990278, guid: a067baae754880d468a7d4eed1543208, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1520,6 +1528,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7013443305689963464, guid: 5a8e6b8a2b9197b4aa99553334509399, type: 3}
+      propertyPath: cardScorePrefab
+      value: 
+      objectReference: {fileID: 247762674090155931, guid: fc50eb4651b183f46a93d162d53ef5a3, type: 3}
     - target: {fileID: 7013443305689963465, guid: 5a8e6b8a2b9197b4aa99553334509399, type: 3}
       propertyPath: m_RootOrder
       value: 11

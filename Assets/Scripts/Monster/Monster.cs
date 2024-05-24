@@ -20,6 +20,7 @@ namespace AG
         private TextMeshProUGUI monsterDamageText = null;
 
         private float currentHP = 0;
+        private float currentChance = 0;
 
         private Vector3 startingPos = Vector3.zero;
 
@@ -44,12 +45,21 @@ namespace AG
                 {
                     monsterDamageText.text = monsterInfo.monsterStats[statIndex].value.ToString();
                 }
+                else if (monsterInfo.monsterStats[statIndex].modifier == Modifier.Chance)
+                {
+                    currentChance = monsterInfo.monsterStats[statIndex].value;
+                }
             }
         }
 
         public float GetCurrentHP()
         {
             return currentHP;
+        }
+
+        public float GetCurrentChance()
+        {
+            return currentChance;
         }
 
         public void TakeDamage(float damage)

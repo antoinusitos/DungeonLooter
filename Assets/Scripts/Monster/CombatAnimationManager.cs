@@ -1,7 +1,6 @@
 using AG;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace AG
@@ -26,31 +25,33 @@ namespace AG
         private IEnumerator AttackFlow(PlayerCard playerCard, Monster currentMonster)
         {
             Card score = Instantiate(CardsManager.instance.cardScorePrefab, DungeonUIManager.instance.GetCardPlacementScore());
+            ScoreCard scoreCard = score.GetComponent<ScoreCard>();
 
             float timer = 0;
             int randTime = 0;
             int rand = 0;
-            TextMeshProUGUI scoreText = null;
             while (timer < 1 && randTime < 10)
             {
                 if (timer >= 0.1f)
                 {
                     rand = Random.Range(0, 100);
-                    scoreText = score.GetComponentInChildren<TextMeshProUGUI>();
-                    scoreText.text = rand.ToString();
-                    if (rand < 5)
+                    scoreCard.SetNumber(rand);
+                    if (rand < PlayerManager.instance.GetCurrentChance())
                     {
                         //player miss
-                        scoreText.color = Color.red;
+                        scoreCard.SetColor(Color.red);
+                        scoreCard.SetDescription("Missed Attack");
                     }
                     else if (rand > (95 - PlayerManager.instance.GetCurrentChance()))
                     {
                         //damage x2
-                        scoreText.color = Color.green;
+                        scoreCard.SetColor(Color.green);
+                        scoreCard.SetDescription("Damage x2");
                     }
                     else
                     {
-                        scoreText.color = Color.black;
+                        scoreCard.SetColor(Color.black);
+                        scoreCard.SetDescription("");
                     }
                     timer = 0;
                     randTime++;
@@ -98,6 +99,7 @@ namespace AG
                 yield return new WaitForSeconds(2);
 
                 score = Instantiate(CardsManager.instance.cardScorePrefab, DungeonUIManager.instance.GetCardPlacementScore());
+                scoreCard = score.GetComponent<ScoreCard>();
 
                 timer = 0;
                 randTime = 0;
@@ -107,21 +109,23 @@ namespace AG
                     if (timer >= 0.1f)
                     {
                         rand = Random.Range(0, 100);
-                        scoreText = score.GetComponentInChildren<TextMeshProUGUI>();
-                        scoreText.text = rand.ToString();
-                        if (rand < 5)
+                        scoreCard.SetNumber(rand);
+                        if (rand < currentMonster.GetCurrentChance())
                         {
                             //monster miss
-                            scoreText.color = Color.red;
+                            scoreCard.SetColor(Color.red);
+                            scoreCard.SetDescription("Missed Attack");
                         }
-                        else if (rand > 95)
+                        else if (rand > 100 - currentMonster.GetCurrentChance())
                         {
                             //damage x2
-                            scoreText.color = Color.green;
+                            scoreCard.SetColor(Color.green);
+                            scoreCard.SetDescription("Damage x2");
                         }
                         else
                         {
-                            scoreText.color = Color.black;
+                            scoreCard.SetColor(Color.black);
+                            scoreCard.SetDescription("");
                         }
                         timer = 0;
                         randTime++;
@@ -141,12 +145,12 @@ namespace AG
                 //monster reply
 
                 damage = currentMonster.GetDamage();
-                if (rand < 5)
+                if (rand < currentMonster.GetCurrentChance())
                 {
                     //monster miss
                     damage = 0;
                 }
-                else if (rand > 95)
+                else if (rand > 100 - currentMonster.GetCurrentChance())
                 {
                     //monster x2
                     damage *= 2;

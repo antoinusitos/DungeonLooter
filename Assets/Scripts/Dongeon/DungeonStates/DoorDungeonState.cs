@@ -18,8 +18,10 @@ namespace AG
             Card cardDesc = Instantiate(CardsManager.instance.cardDescriptionPrefab, DungeonUIManager.instance.GetCardPlacementDescription());
             cardDesc.GetComponentInChildren<TextMeshProUGUI>().text = "You face a " + DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor().GetDoorMaterial() + " door.";
 
+            bool skipDoor = true;
             if(DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor().GetDoorDirection() == DoorDirection.MonoDirectionnal)
             {
+                skipDoor = false;
                 cardDesc.GetComponentInChildren<TextMeshProUGUI>().text += "\nYou see that the door is one way.";
             }
 
@@ -28,8 +30,20 @@ namespace AG
                 float rand = Random.Range(0f, 100f);
                 if(rand <= PlayerManager.instance.GetCurrentChance())
                 {
+                    skipDoor = false;
                     cardDesc.GetComponentInChildren<TextMeshProUGUI>().text += "\nYour senses tell you that this door is trapped";
                 }
+            }
+
+            if(skipDoor)
+            {
+                DungeonUIManager.instance.CleanDescriptionCard();
+                //Handle Event
+                DungeonGeneratorManager.instance.GetDungeon().SetPreviousDoor(DungeonGeneratorManager.instance.GetDungeon().GetTargetDoor());
+                DungeonGeneratorManager.instance.GetDungeon().SetTargetDoor(null);
+                DungeonUIManager.instance.CleanDescriptionCard();
+                DungeonGeneratorManager.instance.GetDungeonFlow().SwitchToState(DungeonStatesManager.instance.startRoomDungeonStateInstance);
+                return;
             }
 
             cardDesc.GetComponentInChildren<TextMeshProUGUI>().text += "\n\nWhat do you do ?";
