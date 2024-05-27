@@ -23,3 +23,5 @@ MonoBehaviour:
     value: 20
   - modifier: 3
     value: 5
+  - modifier: 15
+    value: 30

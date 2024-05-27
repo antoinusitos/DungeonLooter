@@ -20,3 +20,5 @@ MonoBehaviour:
   itemStats:
   - modifier: 1
     value: 15
+  - modifier: 16
+    value: 1

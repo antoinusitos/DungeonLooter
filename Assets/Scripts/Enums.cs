@@ -58,6 +58,9 @@ namespace AG
         Critical,
         ShopPrice,
         MoreInfo,
+        CriticChance,
+        FailChance,
+        Cost
     }
 
     public enum EquipmentType

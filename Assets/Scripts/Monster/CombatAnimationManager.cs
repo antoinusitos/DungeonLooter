@@ -35,13 +35,13 @@ namespace AG
                 {
                     rand = Random.Range(0, 100);
                     scoreCard.SetNumber(rand);
-                    if (rand <= 5)
+                    if (rand <= PlayerManager.instance.GetCurrentFailChance() - (PlayerManager.instance.GetCurrentChance() / 2))
                     {
                         //player miss
                         scoreCard.SetColor(Color.red);
                         scoreCard.SetDescription("Missed Attack");
                     }
-                    else if (rand >= (95 - PlayerManager.instance.GetCurrentChance()))
+                    else if (rand >= 100 - PlayerManager.instance.GetCurrentCriticChance() - PlayerManager.instance.GetCurrentChance())
                     {
                         //damage x2
                         scoreCard.SetColor(Color.green);
@@ -68,12 +68,12 @@ namespace AG
                 yield return null;
             }
             float damage = PlayerManager.instance.GetDamage();
-            if(rand <= 5)
+            if(rand <= PlayerManager.instance.GetCurrentFailChance() - (PlayerManager.instance.GetCurrentChance() / 2))
             {
                 //player miss
                 damage = 0;
             }
-            else if(rand >= (95 - PlayerManager.instance.GetCurrentChance()))
+            else if(rand >= 100 - PlayerManager.instance.GetCurrentCriticChance() - PlayerManager.instance.GetCurrentChance())
             {
                 //damage x critical
                 damage *= PlayerManager.instance.GetCurrentCritical();
@@ -109,7 +109,7 @@ namespace AG
                     {
                         rand = Random.Range(0, 100);
                         scoreCard.SetNumber(rand);
-                        if (rand <= currentMonster.GetCurrentChance())
+                        if (rand <= currentMonster.GetCurrentFailChance())
                         {
                             //monster miss
                             scoreCard.SetColor(Color.red);
@@ -144,7 +144,7 @@ namespace AG
                 //monster reply
 
                 damage = currentMonster.GetDamage();
-                if (rand <= currentMonster.GetCurrentChance())
+                if (rand <= currentMonster.GetCurrentFailChance())
                 {
                     //monster miss
                     damage = 0;

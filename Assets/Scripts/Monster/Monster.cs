@@ -22,6 +22,8 @@ namespace AG
         private float currentHP = 0;
         private float currentChance = 0;
 
+        private float currentFailChance = 0;
+
         private Vector3 startingPos = Vector3.zero;
 
         private const float cardSpeed = 5.0f;
@@ -49,6 +51,10 @@ namespace AG
                 {
                     currentChance = monsterInfo.monsterStats[statIndex].value;
                 }
+                else if (monsterInfo.monsterStats[statIndex].modifier == Modifier.FailChance)
+                {
+                    currentFailChance = monsterInfo.monsterStats[statIndex].value;
+                }
             }
         }
 
@@ -60,6 +66,11 @@ namespace AG
         public float GetCurrentChance()
         {
             return currentChance;
+        }
+
+        public float GetCurrentFailChance()
+        {
+            return currentFailChance;
         }
 
         public void TakeDamage(float damage)

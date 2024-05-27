@@ -26,6 +26,9 @@ namespace AG
 
         private float currentCritical = 2;
 
+        private float currentFailChance = 0;
+        private float currentCriticChance = 0;
+
         private PlayerInventory playerInventory = null;
 
         private const float perfectPerception = 80;
@@ -80,6 +83,14 @@ namespace AG
                     currentDamage = raceInfo.raceStats[raceIndex].value;
                     DungeonUIManager.instance.SetDamageText(currentDamage);
                 }
+                else if (raceInfo.raceStats[raceIndex].modifier == Modifier.FailChance)
+                {
+                    currentFailChance = raceInfo.raceStats[raceIndex].value;
+                }
+                else if (raceInfo.raceStats[raceIndex].modifier == Modifier.CriticChance)
+                {
+                    currentCriticChance = raceInfo.raceStats[raceIndex].value;
+                }
             }
 
             DungeonUIManager.instance.GetRaceCard().SetRace(raceInfo);
@@ -109,6 +120,16 @@ namespace AG
         public float GetCurrentChance()
         {
             return currentChance;
+        }
+
+        public float GetCurrentFailChance()
+        {
+            return currentFailChance;
+        }
+
+        public float GetCurrentCriticChance()
+        {
+            return currentCriticChance;
         }
 
         public float GetCurrentPerception()
